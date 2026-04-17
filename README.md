@@ -1,49 +1,118 @@
-# CivicAssist
+# 🚀 CivicAssist
 
-A civic engagement platform for reporting and tracking community issues (road damage, streetlights, garbage, etc.) with AI-driven moderation.
+CivicAssist is a civic engagement platform for reporting and tracking community issues like potholes, garbage, streetlights, etc., with AI-powered moderation and verification.
 
-## Architecture
+---
 
-- **Frontend**: React 18 + Vite, Tailwind CSS, shadcn/ui 
-- **Backend**: Node.js + Express 
-- **Database**: MongoDB (Mongoose)
-- **Image uploads**: Cloudinary
-- **Auth**: Phone-based OTP 
-- **AI Engine**: Python (PyTorch, CLIP, Transformers) via CLI scripts in `ai_engine/`
+## ❗ Problem
 
-## Project Structure
+- Delayed reporting of civic issues  
+- Lack of transparency in resolution  
+- Fake or duplicate complaints  
+- Poor communication between citizens and authorities  
 
-```
-src/               React frontend (components, screens, context, admin)
-backend/           Express API (routes, models, controllers, services)
-  server.js        Entry point — connects MongoDB, registers routes, seeds DB
-  config/          db.js (Mongoose), cloudinary.js
-  routes/          auth.js, issues.js, admin.js
-  models/          Issue.js, Officer.js, User.js
-  seed.js          Seeds sample issues and officers on startup
-ai_engine/         Python AI scripts (text + image moderation)
-ai_service/        FastAPI wrapper for AI models
-public/            Static assets
-```
+---
 
-## Environment Secrets Required
+## 💡 Solution
 
-| Secret | Purpose |
-|--------|---------|
-| `MONGODB_URI` | MongoDB connection string (must start with `mongodb://` or `mongodb+srv://`) |
-| `CLOUDINARY_CLOUD_NAME` | Cloudinary cloud name |
-| `CLOUDINARY_API_KEY` | Cloudinary API key |
-| `CLOUDINARY_API_SECRET` | Cloudinary API secret |
+CivicAssist enables:
 
-## Development
+- 📷 Easy issue reporting with image & location  
+- 🤖 AI-based fake/duplicate detection  
+- 📍 Nearby issue tracking (15 km radius)  
+- 🏛️ Admin dashboard for efficient management  
+- 🔄 Real-time status updates  
+- 👥 Community-driven engagement  
+
+---
+
+## 🔄 System Flow
+
+![Flowchart](./Flow.png)
+
+---
+
+## ⚙️ Workflow
+
+1. User reports issue with image + description  
+2. Image uploaded to Cloudinary  
+3. Data stored in MongoDB  
+4. AI model analyzes text + image  
+5. Backend processes and stores results  
+6. Admin assigns issue to department  
+7. Status updated (Pending → In Progress → Resolved)  
+8. Community can view and support issues  
+
+---
+
+## 🌟 Unique Features
+
+- 🌐 **Multi-language Support**  
+  Users can interact in their **preferred language**, making the platform inclusive and accessible.
+
+- 🎤 **Speech-to-Text Reporting**  
+  Report issues using **voice input**, enabling faster and more convenient submissions.
+
+- 👥 **Community Feed**  
+  View, support, and engage with issues reported by others — building a **collaborative civic network**.
+
+- 🤖 **AI Chatbot Assistant**  
+  Smart assistant that provides **guidance, FAQs, and issue reporting help** in real time.
+
+- 📈 **Trending Issues**  
+  Highlights the **most critical and popular problems** in the area for quicker attention.
+
+- 🛡️ **AI Fake Detection**  
+  Uses AI to detect **duplicate or false reports**, ensuring data reliability.
+
+- 🏆 **Leaderboard System**  
+  Rewards active users and encourages participation through **gamification**.
+
+- 🔥 **Heatmap Visualization**  
+  Displays **high-density problem areas** for better decision-making and planning.
+
+- 🏛️ **Smart Department Assignment**  
+  Automatically routes issues to the **relevant government departments** for faster resolution.
+
+  
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React 18, Vite, Tailwind CSS, shadcn/ui  
+- **Backend**: Node.js, Express  
+- **Database**: MongoDB (Mongoose)  
+- **Cloud**: Cloudinary  
+- **Authentication**: Phone OTP  
+- **AI Engine**: Python (PyTorch, Transformers, CLIP)  
+
+---
+
+## 📂 Project Structure
+  src/ React frontend
+  backend/ Express API
+  server.js Entry point
+  config/ DB + Cloudinary
+  routes/ auth, issues, admin
+  models/ Issue, Officer, User
+  seed.js Sample data
+  ai_engine/ AI scripts
+  ai_service/ FastAPI wrapper
+  public/ Static assets
+
+
+
+---
+
+## 🔐 Environment Variables
+
+Create a `.env` file:
+
+
+
+---
+
+## ⚙️ Development
 
 ```bash
 npm install
-npm run dev        # Runs backend (port 3001) + Vite frontend (port 5000) concurrently
-```
-
-## Deployment
-
-- **Target**: Autoscale
-- **Build**: `npm run build`
-- **Run**: `node backend/server.js & npx serve dist -l 5000 -s`
+npm run dev
